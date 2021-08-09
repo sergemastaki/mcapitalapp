@@ -40,7 +40,7 @@ const Home = ({ navigation }) => {
             borderRadius: 10,
             backgroundColor: COLORS.white
           }}
-          onPress={() => console.log("Notification on press")}
+          onPress={() => console.log("Trending on press")}
         >
           <View style={{ flexDirection: 'row' }}>
             <View>
@@ -71,9 +71,8 @@ const Home = ({ navigation }) => {
       return (
         <View
           style= {{
-            backgroundColor: 'black',
             width: '100%',
-            height: 290,
+            height: 320,
             ...styles.shadow
           }}
         >
@@ -144,11 +143,44 @@ const Home = ({ navigation }) => {
       )
     }
 
+    function renderNotice() {
+      return (
+        <View style={{
+          marginTop: SIZES.padding * 4.5,
+          marginHorizontal: SIZES.padding,
+          padding: 20,
+          borderRadius: SIZES.radius,
+          backgroundColor: COLORS.secondary,
+          ...styles.shadow
+         }}>
+          <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
+           Investir en sécurité
+          </Text>
+          <Text style={{ color: COLORS.white,
+            marginTop: SIZES.base, ...FONTS.body4 }}>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.
+          </Text>
+          <TouchableOpacity
+            style={{ marginTop: SIZES.base }}
+            onPress={() => console.log("Tuto more on press")}
+          >
+            <Text style={{ textDecorationLine: 'underline',
+            color: COLORS.green, ...FONTS.h3 }}>
+             Learn more
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )
+    }
+
     return (
           <ScrollView>
             <View style={{ flex:1, paddingBottom: 130 }}>
               {renderHeader()}
-              
+              {renderNotice()}
             </View>
           </ScrollView>
     )
