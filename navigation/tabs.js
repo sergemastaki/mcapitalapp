@@ -53,6 +53,9 @@ const Tabs = () => {
               height: 200
             }
           }}
+          screenOptions={{
+            headerShown: false
+          }}
         >
             <Tab.Screen
                 name="Acceuil"
