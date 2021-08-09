@@ -9,6 +9,7 @@ import {
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import { LinearGradient } from 'expo-linear-gradient';
 import { Home } from "../screens"
+import { Market } from "../screens"
 import { COLORS, FONTS, icons } from "../constants"
 
 const Tab = createBottomTabNavigator()
@@ -83,7 +84,7 @@ const Tabs = () => {
             />
             <Tab.Screen
                 name="Marché"
-                component={Home}
+                component={Market}
                 options={{
                   tabBarIcon: ({focused}) => (
                     <View style={{ alignItems: 'center',

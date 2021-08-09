@@ -9,13 +9,16 @@ import {
 } from 'react-native';
 
 import {
+    dummyData,
     COLORS,
     SIZES,
     FONTS,
     icons
 } from '../constants'
 
-const Paires = ({customContainerStyle, paires}) => {
+const Paires = () => {
+
+  const [paires] = React.useState(dummyData.transactionHistory)
 
   const renderItem = ({item}) => (
     <TouchableOpacity
@@ -66,7 +69,7 @@ const Paires = ({customContainerStyle, paires}) => {
         padding: 20,
         borderRadius: SIZES.radius,
         backgroundColor: COLORS.white,
-        ...customContainerStyle
+        ...styles.shadow
       }}
     >
       <Text style={{ ...FONTS.h2 }}>Paires</Text>
@@ -88,5 +91,19 @@ const Paires = ({customContainerStyle, paires}) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    shadow: {
+        shadowColor: COLORS.primary,
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5
+    }
+})
 
 export default Paires;

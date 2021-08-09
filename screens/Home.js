@@ -26,7 +26,6 @@ const image = { uri: "https://reactjs.org/logo-og.png" };
 const Home = ({ navigation }) => {
 
     const [trending] = React.useState(dummyData.trendingCurrencies)
-    const [transactionHistory] = React.useState(dummyData.transactionHistory)
 
     function renderHeader() {
 
@@ -181,10 +180,7 @@ const Home = ({ navigation }) => {
 
     function renderPaires() {
       return (
-        <Paires
-          customContainerStyle={{ ...styles.shadow }}
-          paires={transactionHistory}
-        />
+        <Paires/>
       )
     }
 
