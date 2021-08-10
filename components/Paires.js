@@ -16,7 +16,7 @@ import {
     icons
 } from '../constants'
 
-const Paires = () => {
+const Paires = ({customContainerStyle}) => {
 
   const [paires] = React.useState(dummyData.transactionHistory)
 
@@ -69,7 +69,7 @@ const Paires = () => {
         padding: 20,
         borderRadius: SIZES.radius,
         backgroundColor: COLORS.white,
-        ...styles.shadow
+        ...customContainerStyle
       }}
     >
       <Text style={{ ...FONTS.h2 }}>Paires</Text>
@@ -91,19 +91,5 @@ const Paires = () => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-    shadow: {
-        shadowColor: COLORS.primary,
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5
-    }
-})
 
 export default Paires;

@@ -400,42 +400,62 @@ export const transactionHistory = [
     {
         id: 1,
         description: "Sold Ethereum",
+        type: "VENTE",
         amount: -2.0034,
         currency: "ETH",
-        type: "S",      // S - Sold, B - Bought
-        date: "14:20 12 Apr"
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'BTC',
+        to_currency: 'USDT',
+        state: 'EN_COURS'
     },
     {
         id: 2,
         description: "Bought Ethereum",
+        type: "VENTE",
         amount: 2.0034,
         currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'AVAX',
+        to_currency: 'USDT',
+        state: 'ANNULER'
     },
     {
         id: 3,
         description: "Sold Ethereum",
+        type: "VENTE",
         amount: -2.0034,
         currency: "ETH",
-        type: "S",
-        date: "14:20 12 Apr"
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'ETH',
+        to_currency: 'USDT',
+        state: 'EN_COURS'
     },
     {
         id: 4,
         description: "Bought Ethereum",
+        type: "RETRAIT",
         amount: 2.0034,
         currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'BTC',
+        to_currency: 'USDT',
+        state: 'ANNULER'
     },
     {
         id: 5,
         description: "Bought Ethereum",
+        type: "VENTE",
         amount: 2.0034,
         currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'ETH',
+        to_currency: 'USDT',
+        state: 'EXECUTER'
     },
 
     {
@@ -443,32 +463,48 @@ export const transactionHistory = [
         description: "Bought Ethereum",
         amount: 2.0034,
         currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        type: "ACHAT",
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'LTE',
+        to_currency: 'USDT',
+        state: 'EXECUTER'
     },
     {
         id: 7,
         description: "Bought Ethereum",
+        type: "DEPOT",
         amount: 2.0034,
         currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'BTC',
+        to_currency: 'USDT',
+        state: 'EN_COURS'
     },
     {
         id: 8,
         description: "Bought Ethereum",
+        type: "SWAP",
         amount: 2.0034,
         currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'BTC',
+        to_currency: 'USDT',
+        state: 'EN_COURS'
     },
     {
         id: 9,
         description: "Bought Ethereum",
+        type: "VENTE",
         amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        currency: "AVAX",
+        date: "14:20 12 Apr",
+        montant: 20,
+        from_currency: 'AVAX',
+        to_currency: 'USDT',
+        state: 'EN_COURS'
     },
 ];
 

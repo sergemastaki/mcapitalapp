@@ -8,8 +8,7 @@ import {
 } from "react-native";
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import { LinearGradient } from 'expo-linear-gradient';
-import { Home } from "../screens"
-import { Market } from "../screens"
+import { Home, Market, TransactionHistory } from "../screens"
 import { COLORS, FONTS, icons } from "../constants"
 
 const Tab = createBottomTabNavigator()
@@ -108,7 +107,7 @@ const Tabs = () => {
             />
             <Tab.Screen
                 name="Echanger"
-                component={Home}
+                component={TransactionHistory}
                 options={{
                   tabBarIcon: ({focused}) => (
                       <Image
