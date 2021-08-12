@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import { LinearGradient } from 'expo-linear-gradient';
+import { Entypo } from '@expo/vector-icons';
 import { Home, Market, TransactionHistory } from "../screens"
 import { COLORS, FONTS, icons } from "../constants"
 
@@ -150,24 +151,20 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name="Paramètres"
-                component={Home}
+                name="Transaction history"
+                component={TransactionHistory}
                 options={{
                   tabBarIcon: ({focused}) => (
                     <View style={{ alignItems: 'center',
                     justifyContent: 'center' }}>
-                      <Image
-                        source={icons.settings}
-                        resizedMode="contain"
-                        style={{
-                          width: 30,
-                          height: 30,
-                          tintColor: focused ? COLORS.primary : COLORS.black
-                        }}
+                      <Entypo
+                        name="list"
+                        size={30}
+                        color={focused ? COLORS.primary : COLORS.black}
                       />
                       <Text style={{ color: focused ? COLORS.primary : COLORS.black,
                       ...FONTS.body5 }}>
-                        Paramètres
+                        History
                       </Text>
                     </View>
                   )
