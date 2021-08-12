@@ -3,11 +3,13 @@ import Market from "./Market"
 import CryptoDetail from "./CryptoDetail"
 import Transaction from "./Transaction"
 import TransactionHistory from "./TransactionHistory"
+import Actifs from "./Actifs"
 
 export {
     Home,
     CryptoDetail,
     Transaction,
     TransactionHistory,
-    Market
+    Market,
+    Actifs
 };
