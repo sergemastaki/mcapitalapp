@@ -61,7 +61,9 @@ const Actifs = ({ navigation }) => {
         flex: 1,
         flexDirection: "row",
         justifyContent: "center",
-        marginTop: SIZES.radius }}>
+        marginTop: SIZES.radius
+      }}
+      >
         <TouchableOpacity style={{ ...styles.button }}>
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
             Depot

@@ -4,6 +4,7 @@ import CryptoDetail from "./CryptoDetail"
 import Transaction from "./Transaction"
 import TransactionHistory from "./TransactionHistory"
 import Actifs from "./Actifs"
+import Exchange from "./Exchange"
 
 export {
     Home,
@@ -11,5 +12,6 @@ export {
     Transaction,
     TransactionHistory,
     Market,
-    Actifs
+    Actifs,
+    Exchange
 };
