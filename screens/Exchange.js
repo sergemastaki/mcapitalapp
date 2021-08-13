@@ -32,21 +32,28 @@ const Exchange = ({ navigation }) => {
         }}
         OnPress = {() => console.log(item)}
       >
-        <Image
-          source={icons.transaction}
-          style={{
-            width: 30,
-            height: 30,
-            tintColor: COLORS.green
-          }}
-        />
+        <View style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center" }}>
+          <Text style={{ ...FONTS.h4,
+            color: COLORS.red }}>$ {item.montant}</Text>
+        </View>
         <View style={{
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
           marginLeft: SIZES.radius }}>
-          <Text style={{ ...FONTS.h3,
-            color: COLORS.green }}>{item.montant}</Text>
+          <Text style={{ ...FONTS.h4,
+            color: COLORS.red }}>{item.amount}</Text>
+        </View>
+        <View style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          marginLeft: SIZES.radius }}>
+          <Text style={{ ...FONTS.h4,
+            color: COLORS.red }}>$ {item.montant * item.amount}</Text>
         </View>
         <TouchableOpacity style={{
           flex: 1,
@@ -54,7 +61,7 @@ const Exchange = ({ navigation }) => {
           alignItems: "center",
           marginHorizontal: SIZES.base,
           height: 30,
-          backgroundColor: COLORS.green,
+          backgroundColor: COLORS.red,
           borderRadius: 5
         }}
         >
@@ -72,23 +79,29 @@ const Exchange = ({ navigation }) => {
           alignItems: 'center',
           paddingVertical: SIZES.base
         }}
-        OnPress = {() => console.log(item)}
       >
-        <Image
-          source={icons.transaction}
-          style={{
-            width: 30,
-            height: 30,
-            tintColor: COLORS.red
-          }}
-        />
+        <View style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center" }}>
+          <Text style={{ ...FONTS.h4,
+            color: COLORS.green }}>$ {item.montant}</Text>
+        </View>
         <View style={{
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
           marginLeft: SIZES.radius }}>
-          <Text style={{ ...FONTS.h3,
-            color: COLORS.red }}>{item.montant}</Text>
+          <Text style={{ ...FONTS.h4,
+            color: COLORS.green }}>{item.amount}</Text>
+        </View>
+        <View style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          marginLeft: SIZES.radius }}>
+          <Text style={{ ...FONTS.h4,
+            color: COLORS.green }}>$ {item.montant * item.amount}</Text>
         </View>
         <TouchableOpacity style={{
           flex: 1,
@@ -96,7 +109,7 @@ const Exchange = ({ navigation }) => {
           alignItems: "center",
           marginHorizontal: SIZES.base,
           height: 30,
-          backgroundColor: COLORS.red,
+          backgroundColor: COLORS.green,
           borderRadius: 5
         }}
         >
@@ -129,9 +142,7 @@ const Exchange = ({ navigation }) => {
                   backgroundColor: COLORS.white
                 }}
               >
-                <Text style={{ ...FONTS.h3 }}>Ventes</Text>
                 <FlatList
-                  contentContainerStyle={{ marginTop: SIZES.base }}
                   scrollEnabled={true}
                   data={transactionHistory}
                   keyExtractor={item => item.id.toString()}
@@ -162,9 +173,7 @@ const Exchange = ({ navigation }) => {
                   backgroundColor: COLORS.white
                 }}
               >
-                <Text style={{ ...FONTS.h3 }}>Demandes</Text>
                 <FlatList
-                  contentContainerStyle={{ marginTop: SIZES.base }}
                   scrollEnabled={true}
                   data={transactionHistory}
                   keyExtractor={item => item.id.toString()}
