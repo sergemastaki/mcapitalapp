@@ -10,6 +10,8 @@ import {
     ImageBackground
 } from 'react-native';
 
+import { MaterialIcons } from '@expo/vector-icons';
+
 import {
     dummyData,
     COLORS,
@@ -87,33 +89,53 @@ const Home = ({ navigation }) => {
           >
             <View
               style={{
-                marginTop: SIZES.padding * 2,
+                flex: 1,
+                flexDirection: 'row',
+                marginTop: SIZES.padding * 3,
                 width: "100%",
-                alignItems: "flex-end",
+                alignItems: "center",
                 paddingHorizontal: SIZES.padding
               }}
             >
               <TouchableOpacity
                 style={{
+                  flex: 1,
                   width: 35,
                   height: 35,
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   justifyContent: "center"
                 }}
                 onPress={() => console.log("Notification on press")}
               >
-              <Image
-                source={icons.notification_white}
-                resizedMode="contain"
-                style={{ width: 35, height: 35, }}
-              />
+                <MaterialIcons
+                  name="menu"
+                  size={35}
+                  color={COLORS.white}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  width: 35,
+                  height: 35,
+                  alignItems: "flex-end",
+                  justifyContent: "center"
+                }}
+                onPress={() => console.log("Notification on press")}
+              >
+                <Image
+                  source={icons.notification_white}
+                  resizedMode="contain"
+                  style={{ width: 35, height: 35, }}
+                />
               </TouchableOpacity>
             </View>
 
             <View
               style={{
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                marginTop: SIZES.padding * 2
               }}
             >
               <Text style={{ color: COLORS.white, ...FONTS.h2 }} >
