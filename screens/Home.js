@@ -105,7 +105,7 @@ const Home = ({ navigation }) => {
                   alignItems: "flex-start",
                   justifyContent: "center"
                 }}
-                onPress={() => console.log("Notification on press")}
+                onPress={() => navigation.openDrawer()}
               >
                 <MaterialIcons
                   name="menu"
@@ -139,14 +139,14 @@ const Home = ({ navigation }) => {
               }}
             >
               <Text style={{ color: COLORS.white, ...FONTS.h2 }} >
-                MCapital Exchanger
+                MCapital Exchange
               </Text>
             </View>
 
             <View
               style={{
                 alignSelf: 'flex-start',
-                bottom: '-20%'
+                bottom: '-10%'
               }}
             >
               <Text style={{ marginLeft: SIZES.padding,
