@@ -23,8 +23,6 @@ import {
 
 import { Paires } from '../components'
 
-const image = { uri: "https://reactjs.org/logo-og.png" };
-
 const Home = ({ navigation }) => {
 
     const [trending] = React.useState(dummyData.trendingCurrencies)

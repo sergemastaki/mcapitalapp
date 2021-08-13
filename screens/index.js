@@ -5,6 +5,7 @@ import Transaction from "./Transaction"
 import TransactionHistory from "./TransactionHistory"
 import Actifs from "./Actifs"
 import Exchange from "./Exchange"
+import Login from "./Login"
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     TransactionHistory,
     Market,
     Actifs,
-    Exchange
+    Exchange,
+    Login
 };
