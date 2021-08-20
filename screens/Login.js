@@ -30,11 +30,6 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  const api = axios.create({
-    baseURL: "http://10.0.2.2:8000"
-    });
-
-
   const {isLoggedIn} = useSelector(state => state.authReducer);
   const dispatch = useDispatch();
   const loginUser = () => dispatch(loginAction({

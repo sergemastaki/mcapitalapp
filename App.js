@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Profil">
+        <Drawer.Navigator initialRouteName="Principal">
           <Drawer.Screen name="Profil" component={Login} />
           <Drawer.Screen
             name="Principal"
