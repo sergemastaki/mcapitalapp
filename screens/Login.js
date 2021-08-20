@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import { MaterialIcons } from '@expo/vector-icons';
+import axios from 'axios';
 
 import {
     dummyData,
@@ -23,6 +24,29 @@ import {
 } from '../constants'
 
 const Login = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
+
+  const api = axios.create({
+    baseURL: "http://10.0.2.2:8000"
+    });
+
+  const login = () => {
+     setError(false)
+     api
+       .post('/api/api-token-auth/', {
+         username: email,
+         password: password
+       })
+       .then(function (response) {
+         // handle success
+         alert(JSON.stringify(response.data));
+       })
+       .catch(function (error) {
+         setError(true)
+       })
+    };
 
     return (
             <View style={{
@@ -53,6 +77,7 @@ const Login = ({ navigation }) => {
                   <TextInput
                    style={styles.input}
                    placeholder="do@john.com"
+                   onChangeText={text => setEmail(text)}
                   />
                 </SafeAreaView>
                 <Text style={{
@@ -66,6 +91,7 @@ const Login = ({ navigation }) => {
                   <TextInput
                    style={styles.input}
                    secureTextEntry={true}
+                   onChangeText={text => setPassword(text)}
                   />
                 </SafeAreaView>
                 <TouchableOpacity
@@ -76,12 +102,28 @@ const Login = ({ navigation }) => {
                     height: 50,
                     backgroundColor: COLORS.green
                   }}
-                  onPress={() => console.log("Login on press")}
+                  onPress={() => login()}
                 >
                   <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
                    Login
                   </Text>
                 </TouchableOpacity>
+                {
+                  error ? (
+                  <View
+                    style={{
+                      flex: 1,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginTop: SIZES.padding
+                    }}
+                  >
+                    <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
+                     Email ou Mot de passe incorrect
+                    </Text>
+                  </View>
+                  ) : null
+                }
                 <TouchableOpacity
                   style={{
                     flex: 1,
@@ -89,7 +131,7 @@ const Login = ({ navigation }) => {
                     justifyContent: "center",
                     marginTop: SIZES.padding
                   }}
-                  onPress={() => console.log("Create account on press")}
+                  onPress={() => login()}
                 >
                   <Text style={{ textDecorationLine: 'underline',
                   color: COLORS.primary, ...FONTS.h4 }}>
@@ -110,7 +152,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.30,
         shadowRadius: 4.65,
-
         elevation: 8,
     },
     input: {

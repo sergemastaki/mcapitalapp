@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { View } from "react-native";
 import Tabs from "./navigation/tabs";
+import { Login } from "./screens"
+import { Register } from "./screens"
 
 const Drawer = createDrawerNavigator();
 
@@ -12,10 +14,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Principal">
+        <Drawer.Screen name="Profil" component={Login} />
         <Drawer.Screen
           name="Principal"
           component={Tabs}
-          options={{headerShown: false}}/>
+          options={{headerShown: false}} />
+        <Drawer.Screen name="Moyen de paiement" component={Register} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
