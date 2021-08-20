@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
@@ -13,6 +13,7 @@ import {
 
 import { MaterialIcons } from '@expo/vector-icons';
 import axios from 'axios';
+import {useSelector, useDispatch} from 'react-redux';
 
 import {
     dummyData,
@@ -22,6 +23,7 @@ import {
     icons,
     images
 } from '../constants'
+import {loginAction} from '../redux/actions';
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -32,21 +34,32 @@ const Login = ({ navigation }) => {
     baseURL: "http://10.0.2.2:8000"
     });
 
+
+  const {isLoggedIn} = useSelector(state => state.authReducer);
+  const dispatch = useDispatch();
+  const loginUser = () => dispatch(loginAction({
+    username: email,
+    password: password
+  }));
+
+  const navigateIfLoggedIn = () => {
+      if(isLoggedIn) navigation.navigate('Principal')
+  }
+
+  useEffect(() => {
+    navigateIfLoggedIn()
+  }, []);
+
   const login = () => {
-     setError(false)
-     api
-       .post('/api/api-token-auth/', {
-         username: email,
-         password: password
-       })
-       .then(function (response) {
-         // handle success
-         alert(JSON.stringify(response.data));
-       })
-       .catch(function (error) {
-         setError(true)
-       })
-    };
+    setError(false)
+    loginUser()
+     .then((token) => {
+       navigation.navigate('Principal')
+     })
+     .catch(function (error) {
+       setError(true)
+     })
+  }
 
     return (
             <View style={{

@@ -4,6 +4,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { View } from "react-native";
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 import Tabs from "./navigation/tabs";
 import { Login } from "./screens"
 import { Register } from "./screens"
@@ -12,16 +14,18 @@ const Drawer = createDrawerNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Principal">
-        <Drawer.Screen name="Profil" component={Login} />
-        <Drawer.Screen
-          name="Principal"
-          component={Tabs}
-          options={{headerShown: false}} />
-        <Drawer.Screen name="Moyen de paiement" component={Register} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Profil">
+          <Drawer.Screen name="Profil" component={Login} />
+          <Drawer.Screen
+            name="Principal"
+            component={Tabs}
+            options={{headerShown: false}} />
+          <Drawer.Screen name="Moyen de paiement" component={Register} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </Provider>
   )
 }
 
