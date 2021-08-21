@@ -64,17 +64,32 @@ const Actifs = ({ navigation }) => {
         marginTop: SIZES.radius
       }}
       >
-        <TouchableOpacity style={{ ...styles.button }}>
+        <TouchableOpacity
+          style={{ ...styles.button }}
+          onPress={() => navigation.navigate('Transaction', {
+            type: "Depot"
+          })}
+        >
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
             Depot
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ ...styles.button }}>
+        <TouchableOpacity
+          style={{ ...styles.button }}
+          onPress={() => navigation.navigate('Transaction', {
+            type: "Retrait"
+          })}
+        >
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
             Retrait
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ ...styles.button }}>
+        <TouchableOpacity 
+          style={{ ...styles.button }}
+          onPress={() => navigation.navigate('Transaction', {
+            type: "Swap"
+          })}
+        >
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
             Swap
           </Text>
@@ -88,13 +103,11 @@ const Actifs = ({ navigation }) => {
             <View style={{ flex:1, paddingBottom: 130 }}>
               <View
                 style={{
-                  marginTop: SIZES.padding,
+                  marginTop: SIZES.base,
                   padding: 20
                 }}
               >
-                <Text style={{ ...FONTS.h2 }}>Actifs</Text>
                 <FlatList
-                  contentContainerStyle={{ marginTop: SIZES.radius }}
                   scrollEnabled={false}
                   data={trending}
                   keyExtractor={item => item.id.toString()}

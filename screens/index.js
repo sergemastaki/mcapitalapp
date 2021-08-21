@@ -4,11 +4,13 @@ import CryptoDetail from "./CryptoDetail"
 import Transaction from "./Transaction"
 import TransactionHistory from "./TransactionHistory"
 import Actifs from "./Actifs"
+import ActifsWrapper from "./ActifsWrapper"
 import Exchange from "./Exchange"
 import Login from "./Login"
 import Register from "./Register"
 import Profil from "./Profil"
 import MoyenPaiement from "./MoyenPaiement"
+import ActifTransaction from "./ActifTransaction"
 
 export {
     Home,
@@ -21,5 +23,7 @@ export {
     Login,
     Register,
     Profil,
-    MoyenPaiement
+    MoyenPaiement,
+    ActifsWrapper,
+    ActifTransaction
 };
