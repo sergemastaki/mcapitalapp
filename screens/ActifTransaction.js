@@ -120,7 +120,7 @@ const ActifTransaction = ({ route,navigation }) => {
                   }}
                 >
                   <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
-                   Email ou Mot de passe incorrect
+                   Problem
                   </Text>
                 </View>
                 ) : null
