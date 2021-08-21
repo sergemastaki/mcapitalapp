@@ -9,7 +9,6 @@ import {
     Image,
     ImageBackground
 } from 'react-native';
-
 import { MaterialIcons } from '@expo/vector-icons';
 
 import {
@@ -24,7 +23,6 @@ import {
 import { Paires } from '../components'
 
 const Home = ({ navigation }) => {
-
     const [trending] = React.useState(dummyData.trendingCurrencies)
 
     function renderHeader() {

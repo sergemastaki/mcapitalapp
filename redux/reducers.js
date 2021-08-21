@@ -8,7 +8,9 @@ const initialState = {
 function authReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
-      return {...state, authToken: action.payload, isLoggedIn: true};
+      return Object.assign({}, state, {
+          authToken: action.payload, isLoggedIn: true
+        })
     default:
       return state;
   }

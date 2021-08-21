@@ -4,28 +4,43 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { View } from "react-native";
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { store } from './redux/store';
 import Tabs from "./navigation/tabs";
-import { Login } from "./screens"
-import { Register } from "./screens"
+import { Login, Register, Profil, MoyenPaiement } from "./screens"
 
 const Drawer = createDrawerNavigator();
 
 const App = () => {
+  const {isLoggedIn} = useSelector(state => state.authReducer);
   return (
-    <Provider store={store}>
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Principal">
-          <Drawer.Screen name="Profil" component={Login} />
+          <Drawer.Screen name="Profil" component={Profil} />
           <Drawer.Screen
             name="Principal"
             component={Tabs}
             options={{headerShown: false}} />
-          <Drawer.Screen name="Moyen de paiement" component={Register} />
+          <Drawer.Screen name="Moyen de paiement" component={MoyenPaiement} />
+          {!isLoggedIn ? (
+            <>
+             <Drawer.Screen
+               name="Login"
+               component={Login}
+               options={{title: null, drawerLabel: "Login"}} />
+             <Drawer.Screen
+                name="Register"
+                component={Register}
+                options={{title: null, drawerLabel: "Register"}} />
+            </>
+          ) :
+          (
+            <>
+            </>
+          )
+        }
         </Drawer.Navigator>
       </NavigationContainer>
-    </Provider>
   )
 }
 
@@ -42,6 +57,10 @@ export default props => {
       </View>
     );
   } else {
-    return <App />;
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
   }
 };

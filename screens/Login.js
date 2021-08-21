@@ -143,7 +143,7 @@ const Login = ({ navigation }) => {
                 >
                   <Text style={{ textDecorationLine: 'underline',
                   color: COLORS.primary, ...FONTS.h4 }}>
-                   Vous n'avez pas de compte? creer
+                   Vous n'avez pas de compte? Créer
                   </Text>
                 </TouchableOpacity>
               </View>

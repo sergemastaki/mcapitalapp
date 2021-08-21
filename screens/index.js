@@ -7,6 +7,8 @@ import Actifs from "./Actifs"
 import Exchange from "./Exchange"
 import Login from "./Login"
 import Register from "./Register"
+import Profil from "./Profil"
+import MoyenPaiement from "./MoyenPaiement"
 
 export {
     Home,
@@ -17,5 +19,7 @@ export {
     Actifs,
     Exchange,
     Login,
-    Register
+    Register,
+    Profil,
+    MoyenPaiement
 };
