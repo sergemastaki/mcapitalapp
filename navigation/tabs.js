@@ -9,7 +9,7 @@ import {
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import { LinearGradient } from 'expo-linear-gradient';
 import { Entypo } from '@expo/vector-icons';
-import { Home, Market, TransactionHistory, ActifsWrapper, Exchange } from "../screens"
+import { Home, Market, TransactionHistory, ActifsWrapper, ExchangeWrapper } from "../screens"
 import { COLORS, FONTS, icons } from "../constants"
 
 const Tab = createBottomTabNavigator()
@@ -108,7 +108,7 @@ const Tabs = () => {
             />
             <Tab.Screen
                 name="Echanger"
-                component={Exchange}
+                component={ExchangeWrapper}
                 options={{
                   tabBarIcon: ({focused}) => (
                       <Image

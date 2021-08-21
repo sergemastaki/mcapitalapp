@@ -64,6 +64,9 @@ const Exchange = ({ navigation }) => {
           backgroundColor: COLORS.red,
           borderRadius: 5
         }}
+        onPress={() => navigation.navigate('Transaction', {
+          type: "Acheter"
+        })}
         >
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
             Acheter
@@ -112,6 +115,9 @@ const Exchange = ({ navigation }) => {
           backgroundColor: COLORS.green,
           borderRadius: 5
         }}
+        onPress={() => navigation.navigate('Transaction', {
+          type: "Vendre"
+        })}
         >
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
             Vendre
@@ -196,14 +202,24 @@ const Exchange = ({ navigation }) => {
               marginTop: SIZES.radius
             }}
             >
-              <TouchableOpacity style={{ ...styles.button,
-                backgroundColor: COLORS.green }}>
+              <TouchableOpacity
+                style={{ ...styles.button,
+                  backgroundColor: COLORS.green }}
+                onPress={() => navigation.navigate('Transaction', {
+                  type: "Acheter"
+                })}
+              >
                 <Text style={{ color: COLORS.white, ...FONTS.h2 }}>
                   Acheter
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{ ...styles.button,
-                backgroundColor: COLORS.red }}>
+              <TouchableOpacity
+                style={{ ...styles.button,
+                  backgroundColor: COLORS.red }}
+                onPress={() => navigation.navigate('Transaction', {
+                  type: "Vendre"
+                })}
+              >
                 <Text style={{ color: COLORS.white, ...FONTS.h2 }}>
                   Vendre
                 </Text>
