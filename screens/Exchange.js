@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
+import { useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -19,8 +20,9 @@ import {
     icons
 } from '../constants'
 
-const Exchange = ({ navigation }) => {
+const Exchange = ({ route, navigation }) => {
 
+    const { currency } = useSelector(state => state.currencyReducer)
     const [transactionHistory] = React.useState(dummyData.transactionHistory)
 
     const renderVente = ({item}) => (
@@ -64,8 +66,10 @@ const Exchange = ({ navigation }) => {
           backgroundColor: COLORS.red,
           borderRadius: 5
         }}
-        onPress={() => navigation.navigate('Transaction', {
-          type: "Acheter"
+        onPress={() => navigation.navigate('Achat', {
+          type: "Achat",
+          currency: currency,
+          order: item
         })}
         >
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
@@ -133,7 +137,7 @@ const Exchange = ({ navigation }) => {
               marginTop: SIZES.padding,
               marginHorizontal: SIZES.radius
             }}>
-              <Text style={{ ...FONTS.h2 }}>BTC/USDT</Text>
+              <Text style={{ ...FONTS.h2 }}>{currency}/USDT</Text>
             </View>
             <View style={{
               flex:1,
@@ -205,8 +209,10 @@ const Exchange = ({ navigation }) => {
               <TouchableOpacity
                 style={{ ...styles.button,
                   backgroundColor: COLORS.green }}
-                onPress={() => navigation.navigate('Transaction', {
-                  type: "Acheter"
+                onPress={() => navigation.navigate('Achat', {
+                  type: "Acheter",
+                  currency: currency,
+                  order: null
                 })}
               >
                 <Text style={{ color: COLORS.white, ...FONTS.h2 }}>
@@ -217,7 +223,9 @@ const Exchange = ({ navigation }) => {
                 style={{ ...styles.button,
                   backgroundColor: COLORS.red }}
                 onPress={() => navigation.navigate('Transaction', {
-                  type: "Vendre"
+                  type: "Vendre",
+                  currency: currency,
+                  order: null
                 })}
               >
                 <Text style={{ color: COLORS.white, ...FONTS.h2 }}>
