@@ -22,6 +22,10 @@ import {
 const Actifs = ({ navigation }) => {
 
   const [trending] = React.useState(dummyData.trendingCurrencies)
+  const colorButton = (currency) => {
+    if(currency==='USDT' || currency==='USD') return COLORS.green
+    return COLORS.gray
+  }
 
   const renderItem = ({item, index}) => (
     <View
@@ -87,7 +91,8 @@ const Actifs = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ ...styles.button }}
+          style={{ ...styles.button, backgroundColor: colorButton(item.currency) }}
+          disabled={!(item.currency==='USDT' || item.currency==='USD')}
           onPress={() => navigation.navigate('Swap', {
             currency: item.currency,
             type: "Swap"

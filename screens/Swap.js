@@ -43,13 +43,95 @@ const Swap = ({ route,navigation }) => {
 
   }
   const { currency } = route.params;
+  const renderEquivalent = () => (
+    <>
+      <Text style={{
+        color: COLORS.black,
+        marginTop: SIZES.radius,
+        ...FONTS.h3
+      }}>
+        <Text>Equivalent : </Text>
+        {
+          currency=='USDT' ?
+          (
+            <Text style={{color: COLORS.red, ...FONTS.h3}}>
+              { quantity * 2.5 } USD
+            </Text>
+          ) :
+          (
+            <Text style={{color: COLORS.red, ...FONTS.h3}}>
+              { quantity / 2.5 } USDT
+            </Text>
+          )
+      }
+      </Text>
+    </>
+  )
   return (
           <View style={{
             flex: 1,
             justifyContent: "center",
             alignItems: "center"
           }}>
-            
+            <View style={{
+              marginBottom: SIZES.padding * 4.5,
+              marginHorizontal: SIZES.padding,
+              padding: 20,
+              width: '80%',
+              borderRadius: SIZES.radius,
+              backgroundColor: COLORS.white,
+              ...styles.shadow
+             }}>
+                <Text style={{ color: COLORS.primary, ...FONTS.h2 }}>
+                  {currency}
+                </Text>
+                <Text style={{
+                  color: COLORS.black,
+                  marginTop: SIZES.radius,
+                  ...FONTS.h3
+                }}>
+                  Quantité {currency}:
+                </Text>
+                <SafeAreaView>
+                  <TextInput
+                   style={styles.input}
+                   placeholder="0"
+                   keyboardType="numeric"
+                   onChangeText={text => setQuantity(text)}
+                  />
+                </SafeAreaView>
+                { renderEquivalent() }
+                <TouchableOpacity
+                  style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: SIZES.radius,
+                    height: 50,
+                    backgroundColor: COLORS.green
+                  }}
+                  onPress={() => executer()}
+                >
+                  <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
+                   Executer
+                  </Text>
+                </TouchableOpacity>
+                {
+                  error ? (
+                  <View
+                    style={{
+                      flex: 1,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginTop: SIZES.padding
+                    }}
+                  >
+                    <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
+                     Problem
+                    </Text>
+                  </View>
+                  ) : null
+                }
+            </View>
           </View>
         )
 }
