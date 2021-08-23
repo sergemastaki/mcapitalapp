@@ -119,8 +119,10 @@ const Exchange = ({ route, navigation }) => {
           backgroundColor: COLORS.green,
           borderRadius: 5
         }}
-        onPress={() => navigation.navigate('Transaction', {
-          type: "Vendre"
+        onPress={() => navigation.navigate('Vente', {
+          type: "Vendre",
+          currency: currency,
+          order: item
         })}
         >
           <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
@@ -222,7 +224,7 @@ const Exchange = ({ route, navigation }) => {
               <TouchableOpacity
                 style={{ ...styles.button,
                   backgroundColor: COLORS.red }}
-                onPress={() => navigation.navigate('Transaction', {
+                onPress={() => navigation.navigate('Vente', {
                   type: "Vendre",
                   currency: currency,
                   order: null
