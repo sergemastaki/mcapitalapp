@@ -27,7 +27,8 @@ import {
 import {loginAction} from '../redux/actions';
 
 const Retrait = ({ route,navigation }) => {
-  const [quantity, setQuantity] = useState('');
+  const [montant, setMontant] = useState('');
+  const [wallet, setWallet] = useState('');
   const [moyen, setMoyen] = useState('');
   const [error, setError] = useState(false);
 
@@ -43,6 +44,64 @@ const Retrait = ({ route,navigation }) => {
 
   }
   const { currency } = route.params;
+
+  const renderCrypto = () => (
+    <>
+      <Text style={{
+        color: COLORS.black,
+        marginTop: SIZES.radius,
+        ...FONTS.h3
+      }}>
+        Adresse de wallet:
+      </Text>
+      <SafeAreaView>
+        <TextInput
+         style={styles.input}
+         placeholder="1GyWgXtkVG5gsm9Ym1rkHoJHAftmPnTHQj"
+         keyboardType="numeric"
+         onChangeText={text => setWallet(text)}
+        />
+      </SafeAreaView>
+    </>
+  )
+
+  const renderFiat = () => (
+    <>
+      <Text style={{
+        color: COLORS.black,
+        marginTop: SIZES.radius,
+        ...FONTS.h3
+      }}>
+        Moyen retrait:
+      </Text>
+      <SafeAreaView>
+        <Picker
+          style={styles.input}
+          selectedValue={moyen}
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue, itemIndex) => setMoyen(itemValue)}
+        >
+          <Picker.Item label="Airtel money" value="airtel" />
+          <Picker.Item label="Orange money" value="orange" />
+          <Picker.Item label="Visa" value="visa" />
+        </Picker>
+      </SafeAreaView>
+    </>
+  )
+
+  const renderFrais = () => (
+    <>
+      <Text style={{
+        color: COLORS.black,
+        marginTop: SIZES.radius,
+        ...FONTS.h3
+      }}>
+        <Text>Total(+frais) : </Text>
+        <Text style={{color: COLORS.red, ...FONTS.h3}}>{montant * 2.15}</Text>
+      </Text>
+    </>
+  )
+
   return (
           <View style={{
             flex: 1,
@@ -58,7 +117,61 @@ const Retrait = ({ route,navigation }) => {
               backgroundColor: COLORS.white,
               ...styles.shadow
              }}>
-
+              <Text style={{ color: COLORS.primary, ...FONTS.h2 }}>
+                {currency}
+              </Text>
+              {
+                (currency === 'USDT' || currency ==='USD') ?
+                  renderFiat() :
+                  renderCrypto()
+              }
+              <Text style={{
+                color: COLORS.black,
+                marginTop: SIZES.radius,
+                ...FONTS.h3
+              }}>
+                Montant:
+              </Text>
+              <SafeAreaView>
+                <TextInput
+                 style={styles.input}
+                 placeholder="0"
+                 keyboardType="numeric"
+                 onChangeText={text => setMontant(text)}
+                />
+              </SafeAreaView>
+              { renderFrais() }
+              <TouchableOpacity
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: SIZES.radius,
+                  height: 50,
+                  backgroundColor: COLORS.green
+                }}
+                onPress={() => executer()}
+              >
+                <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
+                 Executer
+                </Text>
+              </TouchableOpacity>
+              {
+                error ? (
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop: SIZES.padding
+                  }}
+                >
+                  <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
+                   Problem
+                  </Text>
+                </View>
+                ) : null
+              }
+            </View>
           </View>
         )
 }
