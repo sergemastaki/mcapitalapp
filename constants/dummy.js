@@ -103,6 +103,202 @@ export const trendingCurrencies = [
         ]
     },
     {
+        id: 9,
+        currency: "USD",
+        code: "USD",
+        image: require("../assets/images/bitcoin.png"),
+        amount: "29,455.74",
+        changes: "+7.24%",
+        type: "I",      // I - Increased, D - Decreased
+        description: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto. The currency began use in 2009 when its implementation was released as open-source software.",
+        chartData: [
+            { x: 1, y: 2.5 },
+            { x: 1.5, y: 2 },
+            { x: 2, y: 2.3 },
+            { x: 2.5, y: 1.4 },
+            { x: 3, y: 1.5 },
+            { x: 3.5, y: 2.3 },
+            { x: 4, y: 2.8 }
+        ],
+        wallet: {
+            value: "170435.86",
+            crypto: "5.1"
+        },
+        transactionHistory: [
+            {
+                id: 1,
+                description: "Sold Bitcoin",
+                amount: -2.0034,
+                currency: "BTC",
+                type: "S",      // S - Sold, B - Bought
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 2,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 3,
+                description: "Sold Bitcoin",
+                amount: -2.0034,
+                currency: "BTC",
+                type: "S",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 4,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 5,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+
+            {
+                id: 6,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 7,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 8,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 9,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+        ]
+    },
+    {
+        id: 8,
+        currency: "USDT",
+        code: "USDT",
+        image: require("../assets/images/bitcoin.png"),
+        amount: "29,455.74",
+        changes: "+7.24%",
+        type: "I",      // I - Increased, D - Decreased
+        description: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto. The currency began use in 2009 when its implementation was released as open-source software.",
+        chartData: [
+            { x: 1, y: 2.5 },
+            { x: 1.5, y: 2 },
+            { x: 2, y: 2.3 },
+            { x: 2.5, y: 1.4 },
+            { x: 3, y: 1.5 },
+            { x: 3.5, y: 2.3 },
+            { x: 4, y: 2.8 }
+        ],
+        wallet: {
+            value: "170435.86",
+            crypto: "5.1"
+        },
+        transactionHistory: [
+            {
+                id: 8,
+                description: "Sold Bitcoin",
+                amount: -2.0034,
+                currency: "BTC",
+                type: "S",      // S - Sold, B - Bought
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 2,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 3,
+                description: "Sold Bitcoin",
+                amount: -2.0034,
+                currency: "BTC",
+                type: "S",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 4,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 5,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+
+            {
+                id: 6,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 7,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 8,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+            {
+                id: 9,
+                description: "Bought Bitcoin",
+                amount: 2.0034,
+                currency: "BTC",
+                type: "B",
+                date: "14:20 12 Apr"
+            },
+        ]
+    },
+    {
         id: 2,
         currency: "Ethereum",
         code: "ETH",

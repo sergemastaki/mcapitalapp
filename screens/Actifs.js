@@ -66,7 +66,8 @@ const Actifs = ({ navigation }) => {
       >
         <TouchableOpacity
           style={{ ...styles.button }}
-          onPress={() => navigation.navigate('Transaction', {
+          onPress={() => navigation.navigate('Depot', {
+            currency: item.currency,
             type: "Depot"
           })}
         >
@@ -76,7 +77,8 @@ const Actifs = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{ ...styles.button }}
-          onPress={() => navigation.navigate('Transaction', {
+          onPress={() => navigation.navigate('Retrait', {
+            currency: item.currency,
             type: "Retrait"
           })}
         >
@@ -84,9 +86,10 @@ const Actifs = ({ navigation }) => {
             Retrait
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={{ ...styles.button }}
-          onPress={() => navigation.navigate('Transaction', {
+          onPress={() => navigation.navigate('Swap', {
+            currency: item.currency,
             type: "Swap"
           })}
         >
