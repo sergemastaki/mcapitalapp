@@ -7,7 +7,7 @@ import { View } from "react-native";
 import { Provider, useSelector } from 'react-redux';
 import { store } from './redux/store';
 import Tabs from "./navigation/tabs";
-import { Login, Register, Profil, MoyenPaiement } from "./screens"
+import { Login, Register, ProfilWrapper, MoyenPaiement } from "./screens"
 
 const Drawer = createDrawerNavigator();
 
@@ -16,7 +16,10 @@ const App = () => {
   return (
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Principal">
-          <Drawer.Screen name="Profil" component={Profil} />
+          <Drawer.Screen
+            name="Profil"
+            component={ProfilWrapper}
+            options={{title: null, drawerLabel: "Profil"}}/>
           <Drawer.Screen
             name="Principal"
             component={Tabs}
