@@ -72,7 +72,7 @@ const Login = ({ navigation }) => {
                 ...styles.shadow
                }}>
                 <Text style={{ color: COLORS.primary, ...FONTS.h2 }}>
-                  Login
+                  Se connecter
                 </Text>
                 <Text style={{
                   color: COLORS.black,
@@ -113,7 +113,7 @@ const Login = ({ navigation }) => {
                   onPress={() => login()}
                 >
                   <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
-                   Login
+                   Se connecter
                   </Text>
                 </TouchableOpacity>
                 {

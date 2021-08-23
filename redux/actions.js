@@ -19,11 +19,24 @@ export const loginAction = (credentials) => {
   }
 }
 
+export const LOGOUT = 'LOGOUT';
+
+export const logoutAction = () => {
+  return dispatch => {
+    dispatch({
+      type: LOGOUT,
+      payload: null,
+    });
+  }
+}
+
 export const SET_CURRENCY = 'SET_CURRENCY';
 
 export const setCurrencyAction = (currency) => {
-  dispatch({
-    type: SET_CURRENCY,
-    payload: currency,
-  });
+  return dispatch => {
+    dispatch({
+      type: SET_CURRENCY,
+      payload: currency,
+    });
+  }
 }

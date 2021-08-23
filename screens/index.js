@@ -8,6 +8,7 @@ import ActifsWrapper from "./ActifsWrapper"
 import Exchange from "./Exchange"
 import ExchangeWrapper from "./ExchangeWrapper"
 import Login from "./Login"
+import Logout from "./Logout"
 import Register from "./Register"
 import Profil from "./Profil"
 import ProfilWrapper from "./ProfilWrapper"
@@ -24,6 +25,7 @@ export {
     Actifs,
     Exchange,
     Login,
+    Logout,
     Register,
     Profil,
     ProfilWrapper,

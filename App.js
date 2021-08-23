@@ -7,7 +7,12 @@ import { View } from "react-native";
 import { Provider, useSelector } from 'react-redux';
 import { store } from './redux/store';
 import Tabs from "./navigation/tabs";
-import { Login, Register, ProfilWrapper, MoyenPaiement } from "./screens"
+import {
+  Login,
+  Logout,
+  Register,
+  ProfilWrapper,
+  MoyenPaiement } from "./screens"
 
 const Drawer = createDrawerNavigator();
 
@@ -39,6 +44,10 @@ const App = () => {
           ) :
           (
             <>
+              <Drawer.Screen
+                name="Logout"
+                component={Logout}
+                options={{title: null, drawerLabel: "Déconnexion"}} />
             </>
           )
         }

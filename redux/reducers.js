@@ -1,4 +1,4 @@
-import {LOGIN, SET_CURRENCY} from './actions';
+import {LOGIN, LOGOUT, SET_CURRENCY} from './actions';
 
 const initialState = {
   isLoggedIn: false,
@@ -11,6 +11,10 @@ function authReducer(state = initialState, action) {
     case LOGIN:
       return Object.assign({}, state, {
           authToken: action.payload, isLoggedIn: true
+        })
+    case LOGOUT:
+      return Object.assign({}, state, {
+          authToken: null, isLoggedIn: false
         })
     default:
       return state;
