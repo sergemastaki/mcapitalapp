@@ -1,8 +1,10 @@
 import Home from "./Home"
 import Market from "./Market"
+import MarketWrapper from "./MarketWrapper"
 import CryptoDetail from "./CryptoDetail"
 import Transaction from "./Transaction"
 import TransactionHistory from "./TransactionHistory"
+import HistoryWrapper from './HistoryWrapper'
 import Actifs from "./Actifs"
 import ActifsWrapper from "./ActifsWrapper"
 import Exchange from "./Exchange"
@@ -21,7 +23,9 @@ export {
     CryptoDetail,
     Transaction,
     TransactionHistory,
+    HistoryWrapper,
     Market,
+    MarketWrapper,
     Actifs,
     Exchange,
     Login,

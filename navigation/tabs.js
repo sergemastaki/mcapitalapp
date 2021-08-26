@@ -9,7 +9,7 @@ import {
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import { LinearGradient } from 'expo-linear-gradient';
 import { Entypo } from '@expo/vector-icons';
-import { Home, Market, TransactionHistory, ActifsWrapper, ExchangeWrapper } from "../screens"
+import { Home, MarketWrapper, HistoryWrapper, ActifsWrapper, ExchangeWrapper } from "../screens"
 import { COLORS, FONTS, icons } from "../constants"
 
 const Tab = createBottomTabNavigator()
@@ -84,7 +84,7 @@ const Tabs = () => {
             />
             <Tab.Screen
                 name="Marché"
-                component={Market}
+                component={MarketWrapper}
                 options={{
                   tabBarIcon: ({focused}) => (
                     <View style={{ alignItems: 'center',
@@ -127,6 +127,26 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
+                name="Transaction history"
+                component={HistoryWrapper}
+                options={{
+                  tabBarIcon: ({focused}) => (
+                    <View style={{ alignItems: 'center',
+                    justifyContent: 'center' }}>
+                      <Entypo
+                        name="list"
+                        size={30}
+                        color={focused ? COLORS.primary : COLORS.black}
+                      />
+                      <Text style={{ color: focused ? COLORS.primary : COLORS.black,
+                      ...FONTS.body5 }}>
+                        Historique
+                      </Text>
+                    </View>
+                  )
+                }}
+            />
+            <Tab.Screen
                 name="Actifs"
                 component={ActifsWrapper}
                 options={{
@@ -145,26 +165,6 @@ const Tabs = () => {
                       <Text style={{ color: focused ? COLORS.primary : COLORS.black,
                       ...FONTS.body5 }}>
                         Actifs
-                      </Text>
-                    </View>
-                  )
-                }}
-            />
-            <Tab.Screen
-                name="Transaction history"
-                component={TransactionHistory}
-                options={{
-                  tabBarIcon: ({focused}) => (
-                    <View style={{ alignItems: 'center',
-                    justifyContent: 'center' }}>
-                      <Entypo
-                        name="list"
-                        size={30}
-                        color={focused ? COLORS.primary : COLORS.black}
-                      />
-                      <Text style={{ color: focused ? COLORS.primary : COLORS.black,
-                      ...FONTS.body5 }}>
-                        History
                       </Text>
                     </View>
                   )
