@@ -1,4 +1,21 @@
+import { AsyncStorage } from 'react-native';
 import {LOGIN, LOGOUT, SET_CURRENCY} from './actions';
+
+_storeToken = async (token) => {
+  try {
+    await AsyncStorage.setItem('TOKEN', token);
+  } catch (error) {
+    console.log('Error when saving token')
+  }
+};
+
+_removeToken = async () => {
+  try {
+    await AsyncStorage.removeItem('TOKEN');
+  } catch (error) {
+    console.log('Error when removing token')
+  }
+};
 
 const initialState = {
   isLoggedIn: false,
@@ -9,10 +26,12 @@ const initialState = {
 function authReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
+      _storeToken(action.payload)
       return Object.assign({}, state, {
-          authToken: action.payload, isLoggedIn: true
+          authToken: action.payload, isLoggedIn: (action.payload !== null)
         })
     case LOGOUT:
+      _removeToken()
       return Object.assign({}, state, {
           authToken: null, isLoggedIn: false
         })
