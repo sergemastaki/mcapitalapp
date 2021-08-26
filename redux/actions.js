@@ -37,6 +37,7 @@ export const SET_MOYEN_DE_TRANSACTION = 'SET_MOYEN_DE_TRANSACTION';
 export const GET_LOGIN_STATE = 'GET_LOGIN_STATE';
 export const GET_USER_INFO = 'GET_USER_INFO';
 export const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
+export const GET_ORDERS = 'GET_ORDERS';
 export const GET_CURRENCIES_TYPES = 'GET_CURRENCIES_TYPES';
 export const GET_CURRENCIES_SOLDES = 'GET_CURRENCIES_SOLDES';
 export const EXECUTE_TRANSACTION = 'EXECUTE_TRANSACTION';
@@ -98,6 +99,15 @@ export const getUserInfoAction = () => {
 export const executeTransactionAction = (transactionInfo) => {
   return async dispatch => {
     return api.post('/transactions/', transactionInfo)
+      .then((res) => {
+        return res.data
+      })
+  }
+}
+
+export const getOrdersAction = () => {
+  return async dispatch => {
+    return api.get('/orders/')
       .then((res) => {
         return res.data
       })

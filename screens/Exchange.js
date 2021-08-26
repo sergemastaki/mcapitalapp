@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -8,9 +8,10 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
-import { useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import {useSelector, useDispatch} from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
 
 import {
     dummyData,
@@ -19,11 +20,33 @@ import {
     FONTS,
     icons
 } from '../constants'
+import {getOrdersAction} from '../redux/actions';
 
 const Exchange = ({ route, navigation }) => {
-
+    const [error, setError] = useState(false);
+    const [orders, setOrders] = useState(false);
     const { currency } = useSelector(state => state.currencyReducer)
-    const [transactionHistory] = React.useState(dummyData.transactionHistory)
+
+    const dispatch = useDispatch();
+    const getOrders = () => dispatch(getOrdersAction());
+
+    const fetchOrders = () => {
+      setError(false)
+      getOrders()
+       .then((data) => {
+         setOrders(data)
+       })
+
+       .catch(function (error) {
+         setError(true)
+       })
+    }
+
+    useFocusEffect(
+      React.useCallback(() => {
+        fetchOrders()
+      }, [])
+    );
 
     const renderVente = ({item}) => (
       <View
@@ -47,7 +70,7 @@ const Exchange = ({ route, navigation }) => {
           alignItems: "center",
           marginLeft: SIZES.radius }}>
           <Text style={{ ...FONTS.h4,
-            color: COLORS.red }}>{item.amount}</Text>
+            color: COLORS.red }}>{item.taux}</Text>
         </View>
         <View style={{
           flex: 1,
@@ -55,7 +78,7 @@ const Exchange = ({ route, navigation }) => {
           alignItems: "center",
           marginLeft: SIZES.radius }}>
           <Text style={{ ...FONTS.h4,
-            color: COLORS.red }}>$ {item.montant * item.amount}</Text>
+            color: COLORS.red }}>$ {item.montant * item.taux}</Text>
         </View>
         <TouchableOpacity style={{
           flex: 1,
@@ -100,7 +123,7 @@ const Exchange = ({ route, navigation }) => {
           alignItems: "center",
           marginLeft: SIZES.radius }}>
           <Text style={{ ...FONTS.h4,
-            color: COLORS.green }}>{item.amount}</Text>
+            color: COLORS.green }}>{item.taux}</Text>
         </View>
         <View style={{
           flex: 1,
@@ -108,7 +131,7 @@ const Exchange = ({ route, navigation }) => {
           alignItems: "center",
           marginLeft: SIZES.radius }}>
           <Text style={{ ...FONTS.h4,
-            color: COLORS.green }}>$ {item.montant * item.amount}</Text>
+            color: COLORS.green }}>$ {item.montant * item.taux}</Text>
         </View>
         <TouchableOpacity style={{
           flex: 1,
@@ -156,7 +179,7 @@ const Exchange = ({ route, navigation }) => {
               >
                 <FlatList
                   scrollEnabled={true}
-                  data={transactionHistory}
+                  data={orders}
                   keyExtractor={item => item.id.toString()}
                   renderItem={renderVente}
                   showsVerticalScrollIndicator={false}
@@ -187,7 +210,7 @@ const Exchange = ({ route, navigation }) => {
               >
                 <FlatList
                   scrollEnabled={true}
-                  data={transactionHistory}
+                  data={orders}
                   keyExtractor={item => item.id.toString()}
                   renderItem={renderDemande}
                   showsVerticalScrollIndicator={false}
