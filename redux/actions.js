@@ -96,6 +96,15 @@ export const getUserInfoAction = () => {
   }
 }
 
+export const getTransactionsAction = () => {
+  return async dispatch => {
+    return api.get('/transactions/')
+      .then((res) => {
+        return res.data
+      })
+  }
+}
+
 export const executeTransactionAction = (transactionInfo) => {
   return async dispatch => {
     return api.post('/transactions/', transactionInfo)

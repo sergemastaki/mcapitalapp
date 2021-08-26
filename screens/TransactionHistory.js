@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -8,6 +8,8 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -18,15 +20,42 @@ import {
     FONTS,
     icons
 } from '../constants'
+import {getTransactionsAction} from '../redux/actions';
 
 const TransactionHistory = ({ navigation }) => {
+    const [transactions, setTransactions] = useState(false);
+    const [error, setError] = useState(false);
+    const dispatch = useDispatch();
+    const getTransactions = () => dispatch(getTransactionsAction());
 
-    const [transactionHistory] = React.useState(dummyData.transactionHistory)
+    const fetchTransactions = () => {
+      setError(false)
+      getTransactions()
+       .then((data) => {
+         setTransactions(data)
+       })
+       .catch(function (error) {
+         setError(true)
+       })
+    }
+
+    useFocusEffect(
+      React.useCallback(() => {
+        fetchTransactions()
+      }, [])
+    );
 
     const getTitle = (item) => {
       const s = item.type.toLowerCase()
-      return `${s[0].toUpperCase()}${s.slice(1)} ${item.currency}`
+      return `${s[0].toUpperCase()}${s.slice(1)} ${getCurrency(item)}`
     }
+
+    const getCurrency = (item) => {
+      const type = item.type
+      if (type === "VENTE" || type === "RETRAIT" || type === "SWAP") return item.from_currency
+      return item.to_currency
+    }
+
 
     const renderTypeIcon = (item) => {
       const type = item.type
@@ -73,12 +102,12 @@ const TransactionHistory = ({ navigation }) => {
         <View style={{ flex: 2, marginLeft: SIZES.radius }}>
           <Text style={{ ...FONTS.h3 }}>{getTitle(item)}</Text>
           <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>
-          {item.date}</Text>
+          {item.created}</Text>
         </View>
         <View style={{ flex: 1, marginLeft: SIZES.radius }}>
           <Text style={{ ...FONTS.body3 }}>$ {item.montant}</Text>
           <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>
-          {item.amount}</Text>
+          {item.taux}</Text>
         </View>
         {renderStateIcon(item)}
       </TouchableOpacity>
@@ -97,7 +126,7 @@ const TransactionHistory = ({ navigation }) => {
                 <FlatList
                   contentContainerStyle={{ marginTop: SIZES.radius }}
                   scrollEnabled={false}
-                  data={transactionHistory}
+                  data={transactions}
                   keyExtractor={item => item.id.toString()}
                   renderItem={renderItem}
                   showsVerticalScrollIndicator={false}
