@@ -24,23 +24,35 @@ import {
     icons,
     images
 } from '../constants'
-import {loginAction} from '../redux/actions';
+import {executeTransactionAction, emptyTransaction} from '../redux/actions';
 
 const Vente = ({ route,navigation }) => {
   const [quantity, setQuantity] = useState('');
   const [prix, setPrix] = useState('');
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
-  const loginUser = () => dispatch(loginAction({
-    username: email,
-    password: password
+  const executeTransaction = () => dispatch(executeTransactionAction({
+    ...emptyTransaction,
+    type: 'VENTE',
+    from_currency:  currency,
+    to_currency: 'USDT',
+    montant: quantity,
+    taux: !order ? prix : 1
   }));
-
 
   const executer = () => {
     setError(false)
-
+    executeTransaction()
+     .then((token) => {
+       navigation.navigate('Actifs')
+     })
+     .catch(function (error) {
+       setError(true)
+       console.log(error.message)
+       //setErrorMessage(error)
+     })
   }
   const { currency, order } = route.params;
 
@@ -150,7 +162,7 @@ const Vente = ({ route,navigation }) => {
                   }}
                 >
                   <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
-                   Problem
+                    {errorMessage}
                   </Text>
                 </View>
                 ) : null
