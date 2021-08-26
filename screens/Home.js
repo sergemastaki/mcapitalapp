@@ -199,6 +199,7 @@ const Home = ({ navigation }) => {
     function renderPaires() {
       return (
         <Paires
+          navigation={{...navigation}}
           customContainerStyle={{ ...styles.shadow } }
         />
       )

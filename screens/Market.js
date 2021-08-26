@@ -11,7 +11,10 @@ const Market = ({ navigation }) => {
     return (
           <ScrollView>
             <View style={{ flex:1, paddingBottom: 130 }}>
-              <Paires customContainerStyle={{ ...styles.customContainer }}/>
+              <Paires
+                navigation={{...navigation}}
+                customContainerStyle={{ ...styles.customContainer }}
+              />
             </View>
           </ScrollView>
     )

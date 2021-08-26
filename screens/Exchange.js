@@ -25,7 +25,7 @@ import {getOrdersAction} from '../redux/actions';
 const Exchange = ({ route, navigation }) => {
     const [error, setError] = useState(false);
     const [orders, setOrders] = useState(false);
-    const { currency } = useSelector(state => state.currencyReducer)
+    const { paire } = useSelector(state => state.currencyReducer)
 
     const dispatch = useDispatch();
     const getOrders = () => dispatch(getOrdersAction());
@@ -162,7 +162,9 @@ const Exchange = ({ route, navigation }) => {
               marginTop: SIZES.padding,
               marginHorizontal: SIZES.radius
             }}>
-              <Text style={{ ...FONTS.h2 }}>{currency}/USDT</Text>
+              <Text style={{ ...FONTS.h2 }}>
+                {paire.from_currency}/{paire.to_currency}
+              </Text>
             </View>
             <View style={{
               flex:1,

@@ -32,7 +32,7 @@ export const emptyTransaction = {
 
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
-export const SET_CURRENCY = 'SET_CURRENCY';
+export const SET_PAIRE = 'SET_PAIRE';
 export const SET_MOYEN_DE_TRANSACTION = 'SET_MOYEN_DE_TRANSACTION';
 export const GET_LOGIN_STATE = 'GET_LOGIN_STATE';
 export const GET_USER_INFO = 'GET_USER_INFO';
@@ -78,11 +78,11 @@ export const logoutAction = () => {
   }
 }
 
-export const setCurrencyAction = (currency) => {
+export const setPaireAction = (paire) => {
   return dispatch => {
     dispatch({
-      type: SET_CURRENCY,
-      payload: currency,
+      type: SET_PAIRE,
+      payload: paire,
     });
   }
 }

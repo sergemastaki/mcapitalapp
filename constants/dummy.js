@@ -3,6 +3,57 @@ export const portfolio = {
     changes: "+2.36%",
 };
 
+export const paires = [
+  {
+    from_currency: 'BTC',
+    to_currency: 'USDT',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+  {
+    from_currency: 'ETH',
+    to_currency: 'USDT',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+  {
+    from_currency: 'BNB',
+    to_currency: 'USDT',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+  {
+    from_currency: 'TRX',
+    to_currency: 'USDT',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+  {
+    from_currency: 'AVAX',
+    to_currency: 'USDT',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+  {
+    from_currency: 'DOT',
+    to_currency: 'USDT',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+  {
+    from_currency: 'USD',
+    to_currency: 'USDT',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+  {
+    from_currency: 'USDT',
+    to_currency: 'USD',
+    vol: 'coming soon',
+    price: 'coming soon'
+  },
+]
+
 export const trendingCurrencies = [
     {
         id: 1,
@@ -727,6 +778,6 @@ const chartOptions = [
     }
 ]
 
-const dummyData = { portfolio, trendingCurrencies, transactionHistory, chartOptions };
+const dummyData = { portfolio, trendingCurrencies, transactionHistory, chartOptions, paires};
 
 export default dummyData;

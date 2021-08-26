@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-import {LOGIN, LOGOUT, SET_CURRENCY} from './actions';
+import {LOGIN, LOGOUT, SET_PAIRE} from './actions';
 
 _storeToken = async (token) => {
   try {
@@ -20,7 +20,10 @@ _removeToken = async () => {
 const initialState = {
   isLoggedIn: false,
   authToken: null,
-  currency: "BTC"
+  paire: {
+    from_currency: "BTC",
+    to_currency: "USDT"
+  }
 };
 
 function authReducer(state = initialState, action) {
@@ -42,9 +45,9 @@ function authReducer(state = initialState, action) {
 
 function currencyReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_CURRENCY:
+    case SET_PAIRE:
       return Object.assign({}, state, {
-          currency: action.payload,
+          paire: action.payload,
         })
     default:
       return state;

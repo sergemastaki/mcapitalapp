@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
-
+import {useDispatch} from 'react-redux';
 import {
     dummyData,
     COLORS,
@@ -15,10 +15,18 @@ import {
     FONTS,
     icons
 } from '../constants'
+import {setPaireAction} from '../redux/actions';
 
-const Paires = ({customContainerStyle}) => {
+const Paires = ({customContainerStyle, navigation}) => {
 
-  const [paires] = React.useState(dummyData.transactionHistory)
+  const [paires] = React.useState(dummyData.paires)
+  const dispatch = useDispatch();
+  const setPaire = (paire) => dispatch(setPaireAction(paire));
+
+  const setGlobalPaire = (paire) => {
+    setPaire(paire)
+    navigation.navigate('Echanger')
+  }
 
   const renderItem = ({item}) => (
     <TouchableOpacity
@@ -27,7 +35,7 @@ const Paires = ({customContainerStyle}) => {
         alignItems: 'center',
         paddingVertical: SIZES.base
       }}
-      OnPress = {() => console.log(item)}
+      onPress = {() => setGlobalPaire(item)}
     >
       <Image
         source={icons.transaction}
@@ -39,15 +47,15 @@ const Paires = ({customContainerStyle}) => {
       />
       <View style={{ flex: 2, marginLeft: SIZES.radius }}>
         <Text>
-          <Text style={{ ...FONTS.h2 }}>USDT/</Text>
-          <Text style={{ ...FONTS.h3 }}>BTC</Text>
+          <Text style={{ ...FONTS.h2 }}>{item.from_currency}/</Text>
+          <Text style={{ ...FONTS.h3 }}>{item.to_currency}</Text>
         </Text>
         <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>
-        {item.date}</Text>
+        {item.vol}</Text>
       </View>
       <View style={{ flex: 1, marginLeft: SIZES.radius }}>
         <Text>
-          <Text style={{ ...FONTS.body3 }}>{item.amount}</Text>
+          <Text style={{ ...FONTS.body3 }}>{item.price}</Text>
         </Text>
       </View>
       <Image
@@ -77,7 +85,6 @@ const Paires = ({customContainerStyle}) => {
         contentContainerStyle={{ marginTop: SIZES.radius }}
         scrollEnabled={false}
         data={paires}
-        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => {
