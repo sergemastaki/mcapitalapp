@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -9,7 +9,8 @@ import {
     Image,
     Button
 } from 'react-native';
-
+import { useFocusEffect } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 import {
     dummyData,
     COLORS,
@@ -18,10 +19,33 @@ import {
     icons,
     images
 } from '../constants'
+import {getCurrenciesSoldesAction} from '../redux/actions';
 
 const Actifs = ({ navigation }) => {
 
   const [trending] = React.useState(dummyData.trendingCurrencies)
+  const [currenciesSoldes, setCurrenciesSoldes] = useState(false);
+  const [error, setError] = useState(false);
+  const dispatch = useDispatch();
+  const getCurrenciesSoldes = () => dispatch(getCurrenciesSoldesAction());
+
+  const fetchCurrenciesSoldes = () => {
+    setError(false)
+    getCurrenciesSoldes()
+     .then((data) => {
+       setCurrenciesSoldes(data)
+     })
+     .catch(function (error) {
+       setError(true)
+     })
+  }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchCurrenciesSoldes()
+    }, [])
+  );
+
   const colorButton = (currency) => {
     if(currency==='USDT' || currency==='USD') return COLORS.green
     return COLORS.gray
@@ -43,7 +67,7 @@ const Actifs = ({ navigation }) => {
       >
         <View>
           <Image
-            source={item.image}
+            source={trending[0].image}
             resizedMode="cover"
             style={{
               marginTop: 5,
@@ -53,13 +77,13 @@ const Actifs = ({ navigation }) => {
           />
         </View>
         <View style={{ marginLeft: SIZES.base }}>
-          <Text style={{ ...FONTS.h3 }}>{item.currency}</Text>
+          <Text style={{ ...FONTS.h3 }}>{item.name}</Text>
           <Text style={{ color: COLORS.gray,
-             ...FONTS.body3 }}>{item.code}</Text>
+             ...FONTS.body3 }}>{item.name}</Text>
         </View>
       </View>
       <View style={{ flex: 1, alignItems: "center" }}>
-        <Text style={{ ...FONTS.h2 }}>{item.amount}</Text>
+        <Text style={{ ...FONTS.h2 }}>{item.solde}</Text>
       </View>
       <View style={{
         flex: 1,
@@ -117,7 +141,7 @@ const Actifs = ({ navigation }) => {
               >
                 <FlatList
                   scrollEnabled={false}
-                  data={trending}
+                  data={currenciesSoldes}
                   keyExtractor={item => item.id.toString()}
                   renderItem={renderItem}
                   showsVerticalScrollIndicator={false}

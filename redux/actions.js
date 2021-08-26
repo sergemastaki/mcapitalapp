@@ -105,6 +105,15 @@ export const getTransactionsAction = () => {
   }
 }
 
+export const getCurrenciesSoldesAction = () => {
+  return async dispatch => {
+    return api.get('/currencies-soldes/')
+      .then((res) => {
+        return res.data
+      })
+  }
+}
+
 export const executeTransactionAction = (transactionInfo) => {
   return async dispatch => {
     return api.post('/transactions/', transactionInfo)
