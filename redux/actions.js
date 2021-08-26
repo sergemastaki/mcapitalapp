@@ -5,6 +5,16 @@ const api = axios.create({
   baseURL: "http://10.0.2.2:8000/api"
   });
 
+  export const setAxiosAuthToken = token => {
+    if (typeof token !== "undefined" && token) {
+      // Apply for every request
+      api.defaults.headers.common["Authorization"] = "Token " + token;
+    } else {
+      // Delete auth header
+      delete api.defaults.headers.common["Authorization"];
+    }
+  };
+
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const SET_CURRENCY = 'SET_CURRENCY';
@@ -16,14 +26,19 @@ export const GET_CURRENCIES_TYPES = 'GET_CURRENCIES_TYPES';
 export const GET_CURRENCIES_SOLDES = 'GET_CURRENCIES_SOLDES';
 export const EXECUTE_TRANSACTION = 'EXECUTE_TRANSACTION';
 
+const dispatchLogin = (dispatch, payload) => {
+  setAxiosAuthToken(payload)
+  dispatch({
+    type: LOGIN,
+    payload: payload,
+  });
+}
+
 export const loginStateAction = () => {
   return async dispatch => {
     AsyncStorage.getItem('TOKEN')
       .then((token) => {
-        dispatch({
-          type: LOGIN,
-          payload: token,
-        });
+        dispatchLogin(dispatch, token)
       })
   }
 }
@@ -32,10 +47,7 @@ export const loginAction = (credentials) => {
   return async dispatch => {
     return api.post('/api-token-auth/', credentials)
       .then((res) => {
-        dispatch({
-          type: LOGIN,
-          payload: res.data.token,
-        });
+        dispatchLogin(dispatch, res.data.token)
         return res.data.token
       })
   }
@@ -56,5 +68,14 @@ export const setCurrencyAction = (currency) => {
       type: SET_CURRENCY,
       payload: currency,
     });
+  }
+}
+
+export const getUserInfoAction = () => {
+  return async dispatch => {
+    return api.get('/accounts/profile/')
+      .then((res) => {
+        return res.data
+      })
   }
 }

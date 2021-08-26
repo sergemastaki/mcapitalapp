@@ -23,21 +23,39 @@ import {
     icons,
     images
 } from '../constants'
-import {loginAction} from '../redux/actions';
+import {getUserInfoAction} from '../redux/actions';
 
 const Profil = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const [error, setError] = useState(false);
 
   const {isLoggedIn} = useSelector(state => state.authReducer);
   const navigateIfNotLoggedIn = () => {
       if(!isLoggedIn) navigation.navigate('Login')
   }
 
+  const dispatch = useDispatch();
+  const getUserInfo = () => dispatch(getUserInfoAction());
+
+  const fetchUserInfo = () => {
+    setError(false)
+    getUserInfo()
+     .then((data) => {
+       setEmail(data.email)
+       setName(data.username)
+       setNumber(data.profile.numero)
+     })
+     .catch(function (error) {
+       setError(true)
+     })
+  }
+
   useFocusEffect(
     React.useCallback(() => {
       navigateIfNotLoggedIn()
+      fetchUserInfo()
     }, [isLoggedIn])
   );
 
@@ -63,12 +81,9 @@ const Profil = ({ navigation }) => {
               }}>
                 Email:
               </Text>
-              <SafeAreaView>
-                <TextInput
-                 style={styles.input}
-                 placeholder="dyglo@gmail.com"
-                />
-              </SafeAreaView>
+              <Text style={{...styles.input}} selectable>
+                {email}
+              </Text>
               <Text style={{
                 color: COLORS.black,
                 marginTop: SIZES.radius,
@@ -76,12 +91,9 @@ const Profil = ({ navigation }) => {
               }}>
                 Nom:
               </Text>
-              <SafeAreaView>
-                <TextInput
-                 style={styles.input}
-                 placeholder="dyglo"
-                />
-              </SafeAreaView>
+              <Text style={{...styles.input}} selectable>
+                {name}
+              </Text>
               <Text style={{
                 color: COLORS.black,
                 marginTop: SIZES.radius,
@@ -89,12 +101,9 @@ const Profil = ({ navigation }) => {
               }}>
                 Numero:
               </Text>
-              <SafeAreaView>
-                <TextInput
-                 style={styles.input}
-                 placeholder="+243997055222"
-                />
-              </SafeAreaView>
+              <Text style={{...styles.input}} selectable>
+                {number}
+              </Text>
               <TouchableOpacity
                 style={{
                   alignItems: "center",
