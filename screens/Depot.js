@@ -41,7 +41,7 @@ const Depot = ({ route,navigation }) => {
     to_currency: currency,
     montant: isFiat() ? montant : quantity,
     tx_id: hash,
-    moyen: moyen
+    moyen: isFiat() ? moyen : 'airtel',
   }));
 
   const isFiat = () => (currency === 'USDT' || currency ==='USD')
@@ -112,6 +112,26 @@ const Depot = ({ route,navigation }) => {
         marginTop: SIZES.radius,
         ...FONTS.h3
       }}>
+        Moyen dépot:
+      </Text>
+      <SafeAreaView>
+        <Picker
+          style={styles.input}
+          selectedValue={moyen}
+          defaultValue="airtel"
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue, itemIndex) => setMoyen(itemValue)}
+        >
+          <Picker.Item label="Airtel money" value="airtel" />
+          <Picker.Item label="Orange money" value="orange" />
+          <Picker.Item label="Visa" value="visa" />
+        </Picker>
+      </SafeAreaView>
+      <Text style={{
+        color: COLORS.black,
+        marginTop: SIZES.radius,
+        ...FONTS.h3
+      }}>
         Numéro:
       </Text>
       <Text style={styles.input} selectable>
@@ -143,26 +163,6 @@ const Depot = ({ route,navigation }) => {
                   renderFiat() :
                   renderCrypto()
               }
-              <Text style={{
-                color: COLORS.black,
-                marginTop: SIZES.radius,
-                ...FONTS.h3
-              }}>
-                Moyen dépot:
-              </Text>
-              <SafeAreaView>
-                <Picker
-                  style={styles.input}
-                  selectedValue={moyen}
-                  defaultValue="airtel"
-                  style={{ height: 50, width: 150 }}
-                  onValueChange={(itemValue, itemIndex) => setMoyen(itemValue)}
-                >
-                  <Picker.Item label="Airtel money" value="airtel" />
-                  <Picker.Item label="Orange money" value="orange" />
-                  <Picker.Item label="Visa" value="visa" />
-                </Picker>
-              </SafeAreaView>
               <Text style={{
                 color: COLORS.black,
                 marginTop: SIZES.radius,

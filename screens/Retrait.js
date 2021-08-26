@@ -24,24 +24,38 @@ import {
     icons,
     images
 } from '../constants'
-import {loginAction} from '../redux/actions';
+import {executeTransactionAction, emptyTransaction} from '../redux/actions';
 
 const Retrait = ({ route,navigation }) => {
   const [montant, setMontant] = useState('');
   const [wallet, setWallet] = useState('');
   const [moyen, setMoyen] = useState('');
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
-  const loginUser = () => dispatch(loginAction({
-    username: email,
-    password: password
+  const executeTransaction = () => dispatch(executeTransactionAction({
+    ...emptyTransaction,
+    type: 'RETRAIT',
+    from_currency: currency,
+    montant: montant,
+    wallet: isFiat() ? 'none' : wallet,
+    moyen: isFiat() ? moyen : 'none',
   }));
 
+  const isFiat = () => (currency === 'USDT' || currency ==='USD')
 
   const executer = () => {
     setError(false)
-
+    executeTransaction()
+     .then((token) => {
+       navigation.navigate('Actifs')
+     })
+     .catch(function (error) {
+       setError(true)
+       console.log(error.message)
+       //setErrorMessage(error)
+     })
   }
   const { currency } = route.params;
 
@@ -166,7 +180,7 @@ const Retrait = ({ route,navigation }) => {
                   }}
                 >
                   <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
-                   Problem
+                   {errorMessage}
                   </Text>
                 </View>
                 ) : null
