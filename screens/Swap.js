@@ -24,23 +24,34 @@ import {
     icons,
     images
 } from '../constants'
-import {loginAction} from '../redux/actions';
+import {executeTransactionAction, emptyTransaction} from '../redux/actions';
 
 const Swap = ({ route,navigation }) => {
   const [quantity, setQuantity] = useState('');
   const [moyen, setMoyen] = useState('');
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
-  const loginUser = () => dispatch(loginAction({
-    username: email,
-    password: password
+  const executeTransaction = () => dispatch(executeTransactionAction({
+    ...emptyTransaction,
+    type: 'SWAP',
+    from_currency:  currency,
+    to_currency: (currency === 'USDT') ? 'USD' : 'USDT',
+    montant: quantity
   }));
-
 
   const executer = () => {
     setError(false)
-
+    executeTransaction()
+     .then((token) => {
+       navigation.navigate('Actifs')
+     })
+     .catch(function (error) {
+       setError(true)
+       console.log(error.message)
+       //setErrorMessage(error)
+     })
   }
   const { currency } = route.params;
   const renderEquivalent = () => (
@@ -126,7 +137,7 @@ const Swap = ({ route,navigation }) => {
                     }}
                   >
                     <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
-                     Problem
+                     {errorMessage}
                     </Text>
                   </View>
                   ) : null
