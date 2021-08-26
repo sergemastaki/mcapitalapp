@@ -24,7 +24,7 @@ import {
     icons,
     images
 } from '../constants'
-import {loginAction} from '../redux/actions';
+import {executeTransactionAction, emptyTransaction} from '../redux/actions';
 
 const Depot = ({ route,navigation }) => {
   const [quantity, setQuantity] = useState('');
@@ -32,17 +32,31 @@ const Depot = ({ route,navigation }) => {
   const [hash, setHash] = useState('');
   const [moyen, setMoyen] = useState('');
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
-  const loginUser = () => dispatch(loginAction({
-    username: email,
-    password: password
+  const executeTransaction = () => dispatch(executeTransactionAction({
+    ...emptyTransaction,
+    type: 'DEPOT',
+    to_currency: currency,
+    montant: isFiat() ? montant : quantity,
+    tx_id: hash,
+    moyen: moyen
   }));
 
+  const isFiat = () => (currency === 'USDT' || currency ==='USD')
 
   const executer = () => {
     setError(false)
-
+    executeTransaction()
+     .then((token) => {
+       navigation.navigate('Actifs')
+     })
+     .catch(function (error) {
+       setError(true)
+       console.log(error.message)
+       //setErrorMessage(error)
+     })
   }
   const { currency } = route.params;
 
@@ -98,25 +112,6 @@ const Depot = ({ route,navigation }) => {
         marginTop: SIZES.radius,
         ...FONTS.h3
       }}>
-        Moyen dépot:
-      </Text>
-      <SafeAreaView>
-        <Picker
-          style={styles.input}
-          selectedValue={moyen}
-          style={{ height: 50, width: 150 }}
-          onValueChange={(itemValue, itemIndex) => setMoyen(itemValue)}
-        >
-          <Picker.Item label="Airtel money" value="airtel" />
-          <Picker.Item label="Orange money" value="orange" />
-          <Picker.Item label="Visa" value="visa" />
-        </Picker>
-      </SafeAreaView>
-      <Text style={{
-        color: COLORS.black,
-        marginTop: SIZES.radius,
-        ...FONTS.h3
-      }}>
         Numéro:
       </Text>
       <Text style={styles.input} selectable>
@@ -148,6 +143,26 @@ const Depot = ({ route,navigation }) => {
                   renderFiat() :
                   renderCrypto()
               }
+              <Text style={{
+                color: COLORS.black,
+                marginTop: SIZES.radius,
+                ...FONTS.h3
+              }}>
+                Moyen dépot:
+              </Text>
+              <SafeAreaView>
+                <Picker
+                  style={styles.input}
+                  selectedValue={moyen}
+                  defaultValue="airtel"
+                  style={{ height: 50, width: 150 }}
+                  onValueChange={(itemValue, itemIndex) => setMoyen(itemValue)}
+                >
+                  <Picker.Item label="Airtel money" value="airtel" />
+                  <Picker.Item label="Orange money" value="orange" />
+                  <Picker.Item label="Visa" value="visa" />
+                </Picker>
+              </SafeAreaView>
               <Text style={{
                 color: COLORS.black,
                 marginTop: SIZES.radius,
@@ -187,7 +202,7 @@ const Depot = ({ route,navigation }) => {
                   }}
                 >
                   <Text style={{ color: COLORS.red, ...FONTS.h4 }}>
-                   Problem
+                   {errorMessage}
                   </Text>
                 </View>
                 ) : null

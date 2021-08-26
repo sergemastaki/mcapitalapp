@@ -5,15 +5,30 @@ const api = axios.create({
   baseURL: "http://10.0.2.2:8000/api"
   });
 
-  export const setAxiosAuthToken = token => {
-    if (typeof token !== "undefined" && token) {
-      // Apply for every request
-      api.defaults.headers.common["Authorization"] = "Token " + token;
-    } else {
-      // Delete auth header
-      delete api.defaults.headers.common["Authorization"];
-    }
-  };
+export const setAxiosAuthToken = token => {
+  if (typeof token !== "undefined" && token) {
+    // Apply for every request
+    api.defaults.headers.common["Authorization"] = "Token " + token;
+  } else {
+    // Delete auth header
+    delete api.defaults.headers.common["Authorization"];
+  }
+};
+
+export const emptyTransaction = {
+  code: 'none',
+  tx_id: 'none',
+  type: 'DEPOT',
+  taux: 1,
+  state: 'EN_COURS',
+  montant: 0,
+  wallet: 'none',
+  moyen: 'none',
+  account_number: 'none',
+  from_currency: 'BTC',
+  to_currency: 'USD',
+  moyen: 'airtel',
+}
 
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
@@ -74,6 +89,15 @@ export const setCurrencyAction = (currency) => {
 export const getUserInfoAction = () => {
   return async dispatch => {
     return api.get('/accounts/profile/')
+      .then((res) => {
+        return res.data
+      })
+  }
+}
+
+export const executeTransactionAction = (transactionInfo) => {
+  return async dispatch => {
+    return api.post('/transactions/', transactionInfo)
       .then((res) => {
         return res.data
       })
