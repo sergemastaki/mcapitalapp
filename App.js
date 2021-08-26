@@ -44,11 +44,11 @@ const App = () => {
            <Drawer.Screen
              name="Login"
              component={Login}
-             options={{title: null, drawerLabel: "Login"}} />
+             options={{title: null, drawerLabel: "Se connecter"}} />
            <Drawer.Screen
               name="Register"
               component={Register}
-              options={{title: null, drawerLabel: "Register"}} />
+              options={{title: null, drawerLabel: "S'enregistrer"}} />
           </>
         ) :
         (
