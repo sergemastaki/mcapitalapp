@@ -55,7 +55,7 @@ const Depot = ({ route,navigation }) => {
       }}>
         Adresse:
       </Text>
-      <Text style={{aliText: 'center',...styles.input}} selectable>
+      <Text style={{...styles.input}} selectable>
         {"1GyWgXtkVG5gsm9Ym1rkHoJHAftmPnTHQj"}
       </Text>
       <Text style={{

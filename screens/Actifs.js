@@ -9,6 +9,8 @@ import {
     Image,
     Button
 } from 'react-native';
+import {useSelector, useDispatch} from 'react-redux'
+import { useFocusEffect } from '@react-navigation/native';
 
 import {
     dummyData,
@@ -26,6 +28,17 @@ const Actifs = ({ navigation }) => {
     if(currency==='USDT' || currency==='USD') return COLORS.green
     return COLORS.gray
   }
+
+  const {isLoggedIn} = useSelector(state => state.authReducer);
+  const navigateIfNotLoggedIn = () => {
+      if(!isLoggedIn) navigation.navigate('Login')
+  }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      navigateIfNotLoggedIn()
+    }, [isLoggedIn])
+  );
 
   const renderItem = ({item, index}) => (
     <View

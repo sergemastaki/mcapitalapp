@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import {useSelector, useDispatch} from 'react-redux'
+import { useFocusEffect } from '@react-navigation/native';
 
 import {
     dummyData,
@@ -22,6 +24,16 @@ import {
 const TransactionHistory = ({ navigation }) => {
 
     const [transactionHistory] = React.useState(dummyData.transactionHistory)
+    const {isLoggedIn} = useSelector(state => state.authReducer);
+    const navigateIfNotLoggedIn = () => {
+        if(!isLoggedIn) navigation.navigate('Login')
+    }
+
+    useFocusEffect(
+      React.useCallback(() => {
+        navigateIfNotLoggedIn()
+      }, [isLoggedIn])
+    );
 
     const getTitle = (item) => {
       const s = item.type.toLowerCase()
