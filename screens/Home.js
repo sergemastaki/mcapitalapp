@@ -141,7 +141,7 @@ const Home = ({ navigation }) => {
             >
               <Text style={{ marginLeft: SIZES.padding,
                 color: COLORS.white, ...FONTS.h2 }} >
-                Trending
+                Tendance
               </Text>
               <FlatList
                 contentContainerStyle={{marginTop: SIZES.base}}
