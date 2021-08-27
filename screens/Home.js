@@ -170,21 +170,13 @@ const Home = ({ navigation }) => {
            Investir en sécurité
           </Text>
           <Text style={{ color: COLORS.white,
-            marginTop: SIZES.base, ...FONTS.body4 }}>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat.
+            marginTop: SIZES.base, ...FONTS.body5 }}>
+            Mulumbu Capital Exchange vous permet d´échanger vos cryptomonnaies en toute sécurité. Il vous fournit un service de qualité, fiable et rapide.
+            Devenez utilisateur de MCapital Exchange en seulement 3 étapes :{'\n'}
+            1. Compléter votre inscription en cliquant sur le menu puis s´enregistrer{'\n'}
+            2. Compléter votre identité sous Profil{'\n'}
+            3. Accéder à vos actifs et explorer le marché des cryptomonnaies
           </Text>
-          <TouchableOpacity
-            style={{ marginTop: SIZES.base }}
-            onPress={() => console.log("Tuto more on press")}
-          >
-            <Text style={{ textDecorationLine: 'underline',
-            color: COLORS.green, ...FONTS.h3 }}>
-             Learn more
-            </Text>
-          </TouchableOpacity>
         </View>
       )
     }
