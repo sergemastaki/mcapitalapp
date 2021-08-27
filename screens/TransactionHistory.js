@@ -105,7 +105,7 @@ const TransactionHistory = ({ navigation }) => {
           {item.created}</Text>
         </View>
         <View style={{ flex: 1, marginLeft: SIZES.radius }}>
-          <Text style={{ ...FONTS.body3 }}>$ {item.montant}</Text>
+          <Text style={{ ...FONTS.body3 }}>{item.montant} {getCurrency(item)}</Text>
           <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>
           {item.taux}</Text>
         </View>
