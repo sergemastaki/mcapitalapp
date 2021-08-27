@@ -23,7 +23,8 @@ import {getCurrenciesSoldesAction} from '../redux/actions';
 
 const Actifs = ({ navigation }) => {
 
-  const [trending] = React.useState(dummyData.trendingCurrencies)
+  const [currenciesImages] = React.useState(dummyData.currenciesImages)
+  const [currenciesFullNames] = React.useState(dummyData.currenciesFullNames)
   const [currenciesSoldes, setCurrenciesSoldes] = useState(false);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
@@ -67,7 +68,7 @@ const Actifs = ({ navigation }) => {
       >
         <View>
           <Image
-            source={trending[0].image}
+            source={currenciesImages[item.name]}
             resizedMode="cover"
             style={{
               marginTop: 5,
@@ -77,7 +78,7 @@ const Actifs = ({ navigation }) => {
           />
         </View>
         <View style={{ marginLeft: SIZES.base }}>
-          <Text style={{ ...FONTS.h3 }}>{item.name}</Text>
+          <Text style={{ ...FONTS.h3 }}>{currenciesFullNames[item.name]}</Text>
           <Text style={{ color: COLORS.gray,
              ...FONTS.body3 }}>{item.name}</Text>
         </View>

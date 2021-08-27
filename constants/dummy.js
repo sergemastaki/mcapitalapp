@@ -3,6 +3,28 @@ export const portfolio = {
     changes: "+2.36%",
 };
 
+export const currenciesImages = {
+  BTC: require("../assets/images/bitcoin.png"),
+  ETH: require("../assets/images/ethereum.png"),
+  BNB: require("../assets/images/bnb.png"),
+  TRX: require("../assets/images/trx.png"),
+  AVAX: require("../assets/images/avax.png"),
+  DOT: require("../assets/images/dot.png"),
+  USD: require("../assets/images/usd.png"),
+  USDT: require("../assets/images/usdt.png")
+}
+
+export const currenciesFullNames = {
+  BTC: 'Bitcoin',
+  ETH: 'Ether',
+  BNB: 'Binance Smart Chain',
+  TRX: 'Tron',
+  AVAX: 'Avalanche',
+  DOT: 'Polkadot',
+  USD: 'USD',
+  USDT:'Tether'
+}
+
 export const paires = [
   {
     from_currency: 'BTC',
@@ -778,6 +800,14 @@ const chartOptions = [
     }
 ]
 
-const dummyData = { portfolio, trendingCurrencies, transactionHistory, chartOptions, paires};
+const dummyData = {
+  portfolio,
+  trendingCurrencies,
+  transactionHistory,
+  chartOptions,
+  paires,
+  currenciesImages,
+  currenciesFullNames
+};
 
 export default dummyData;
