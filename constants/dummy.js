@@ -61,19 +61,7 @@ export const paires = [
     to_currency: 'USDT',
     vol: 'coming soon',
     price: 'coming soon'
-  },
-  {
-    from_currency: 'USD',
-    to_currency: 'USDT',
-    vol: 'coming soon',
-    price: 'coming soon'
-  },
-  {
-    from_currency: 'USDT',
-    to_currency: 'USD',
-    vol: 'coming soon',
-    price: 'coming soon'
-  },
+  }
 ]
 
 export const trendingCurrencies = [

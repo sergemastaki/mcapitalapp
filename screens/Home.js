@@ -23,7 +23,9 @@ import {
 import { Paires } from '../components'
 
 const Home = ({ navigation }) => {
-    const [trending] = React.useState(dummyData.trendingCurrencies)
+    const [currencies] = React.useState(dummyData.paires)
+    const [currenciesFullNames] = React.useState(dummyData.currenciesFullNames)
+    const [currenciesImages] = React.useState(dummyData.currenciesImages)
 
     function renderHeader() {
 
@@ -44,7 +46,7 @@ const Home = ({ navigation }) => {
           <View style={{ flexDirection: 'row' }}>
             <View>
               <Image
-                source={item.image}
+                source={currenciesImages[item.from_currency]}
                 resizedMode="cover"
                 style={{
                   marginTop: 5,
@@ -54,15 +56,15 @@ const Home = ({ navigation }) => {
               />
             </View>
             <View style={{ marginLeft: SIZES.base }}>
-              <Text style={{ ...FONTS.h2 }}>{item.currency}</Text>
+              <Text style={{ ...FONTS.h3 }}>{currenciesFullNames[item.from_currency]}</Text>
               <Text style={{ color: COLORS.gray,
-                 ...FONTS.body3 }}>{item.code}</Text>
+                 ...FONTS.body3 }}>{item.from_currency}</Text>
             </View>
           </View>
           <View style={{ marginLeft: SIZES.base }}>
-            <Text style={{ ...FONTS.h2 }}>{item.amount}</Text>
+            <Text style={{ ...FONTS.h3 }}>soon</Text>
             <Text style={{ color: item.type == 'I' ?
-               COLORS.green : COLORS.red, ...FONTS.h3 }}>{item.changes}</Text>
+               COLORS.green : COLORS.red, ...FONTS.h3 }}>soon</Text>
           </View>
         </TouchableOpacity>
       )
@@ -143,9 +145,8 @@ const Home = ({ navigation }) => {
               </Text>
               <FlatList
                 contentContainerStyle={{marginTop: SIZES.base}}
-                data={trending}
+                data={currencies}
                 renderItem={renderItem}
-                keyExtractor={item => item.id.toString()}
                 horizontal
                 showsVerticalScrollIndicator={false}
               />
