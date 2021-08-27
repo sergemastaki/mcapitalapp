@@ -115,8 +115,8 @@ const Actifs = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ ...styles.button, backgroundColor: colorButton(item.currency) }}
-          disabled={!(item.currency==='USDT' || item.currency==='USD')}
+          style={{ ...styles.button, backgroundColor: colorButton(item.name) }}
+          disabled={!(item.name==='USDT' || item.name==='USD')}
           onPress={() => navigation.navigate('Swap', {
             currency: item.currency,
             type: "Swap"

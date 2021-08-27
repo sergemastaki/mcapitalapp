@@ -91,7 +91,7 @@ const Exchange = ({ route, navigation }) => {
         }}
         onPress={() => navigation.navigate('Achat', {
           type: "Achat",
-          currency: currency,
+          currency: paire.from_currency,
           order: item
         })}
         >
@@ -144,7 +144,7 @@ const Exchange = ({ route, navigation }) => {
         }}
         onPress={() => navigation.navigate('Vente', {
           type: "Vendre",
-          currency: currency,
+          currency: paire.from_currency,
           order: item
         })}
         >
@@ -238,7 +238,7 @@ const Exchange = ({ route, navigation }) => {
                   backgroundColor: COLORS.green }}
                 onPress={() => navigation.navigate('Achat', {
                   type: "Acheter",
-                  currency: currency,
+                  currency: paire.from_currency,
                   order: null
                 })}
               >
@@ -251,7 +251,7 @@ const Exchange = ({ route, navigation }) => {
                   backgroundColor: COLORS.red }}
                 onPress={() => navigation.navigate('Vente', {
                   type: "Vendre",
-                  currency: currency,
+                  currency: paire.from_currency,
                   order: null
                 })}
               >

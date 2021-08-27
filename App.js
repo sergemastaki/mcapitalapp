@@ -31,13 +31,13 @@ const App = () => {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Principal">
         <Drawer.Screen
-          name="Profil"
-          component={ProfilWrapper}
-          options={{title: null, drawerLabel: "Profil"}}/>
-        <Drawer.Screen
           name="Principal"
           component={Tabs}
           options={{headerShown: false}} />
+        <Drawer.Screen
+          name="Profil"
+          component={ProfilWrapper}
+          options={{title: null, drawerLabel: "Profil"}}/>
         <Drawer.Screen name="Moyen de paiement" component={MoyenPaiement} />
         {!isLoggedIn ? (
           <>
