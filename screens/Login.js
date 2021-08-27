@@ -134,15 +134,14 @@ const Login = ({ navigation }) => {
                 }
                 <TouchableOpacity
                   style={{
-                    flex: 1,
                     alignItems: "center",
                     justifyContent: "center",
-                    marginTop: SIZES.padding
+                    marginTop: SIZES.radius
                   }}
-                  onPress={() => login()}
+                  onPress={() => navigation.navigate('Register')}
                 >
                   <Text style={{ textDecorationLine: 'underline',
-                  color: COLORS.primary, ...FONTS.h4 }}>
+                    color: COLORS.primary, ...FONTS.h4 }}>
                    Vous n'avez pas de compte? Créer
                   </Text>
                 </TouchableOpacity>
