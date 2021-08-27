@@ -127,7 +127,7 @@ const Register = ({ navigation }) => {
                   marginTop: SIZES.radius,
                   ...FONTS.h3
                 }}>
-                  Nom:
+                  Username:
                 </Text>
                 <SafeAreaView>
                   <TextInput
@@ -142,7 +142,7 @@ const Register = ({ navigation }) => {
                     color: COLORS.red,
                     ...FONTS.h4
                   }}>
-                    Le nom est obligatoire
+                    Le username est obligatoire
                   </Text>
                   ) : null
                 }
