@@ -54,8 +54,8 @@ const Actifs = ({ navigation }) => {
   const renderItem = ({item, index}) => (
     <View
       style={{
-        paddingVertical: SIZES.padding,
-        paddingHorizontal: SIZES.padding,
+        paddingVertical: SIZES.radius,
+        paddingHorizontal: SIZES.radius,
         marginTop: SIZES.padding,
         borderRadius: 10,
         backgroundColor: COLORS.white
@@ -81,9 +81,9 @@ const Actifs = ({ navigation }) => {
           <Text style={{ color: COLORS.gray,
              ...FONTS.body3 }}>{item.name}</Text>
         </View>
-      </View>
-      <View style={{ flex: 1, alignItems: "center" }}>
-        <Text style={{ ...FONTS.h2 }}>{item.solde}</Text>
+        <View style={{ flex: 1, alignItems: "center" }}>
+          <Text style={{ ...FONTS.h2 }}>{item.solde}</Text>
+        </View>
       </View>
       <View style={{
         flex: 1,
@@ -135,8 +135,8 @@ const Actifs = ({ navigation }) => {
             <View style={{ flex:1, paddingBottom: 130 }}>
               <View
                 style={{
-                  marginTop: SIZES.base,
-                  padding: 20
+                  marginTop: 0,
+                  paddingHorizontal: 20
                 }}
               >
                 <FlatList
