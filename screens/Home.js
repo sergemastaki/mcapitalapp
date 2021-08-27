@@ -31,8 +31,8 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
           style={{
             width: 180,
-            height: 180,
-            paddingVertical: SIZES.padding,
+            height: 120,
+            paddingVertical: SIZES.radius,
             paddingHorizontal: SIZES.padding,
             marginLeft: index == 0 ? SIZES.padding : 0,
             marginRight: SIZES.radius,
@@ -71,7 +71,7 @@ const Home = ({ navigation }) => {
         <View
           style= {{
             width: '100%',
-            height: 320,
+            height: 220,
             ...styles.shadow
           }}
         >
@@ -109,6 +109,9 @@ const Home = ({ navigation }) => {
                   color={COLORS.white}
                 />
               </TouchableOpacity>
+              <Text style={{ color: COLORS.white, ...FONTS.h2 }} >
+                MCapital Exchange
+              </Text>
               <TouchableOpacity
                 style={{
                   flex: 1,
@@ -129,19 +132,8 @@ const Home = ({ navigation }) => {
 
             <View
               style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: SIZES.padding * 2
-              }}
-            >
-              <Text style={{ color: COLORS.white, ...FONTS.h2 }} >
-                MCapital Exchange
-              </Text>
-            </View>
-
-            <View
-              style={{
                 alignSelf: 'flex-start',
+                marginTop: SIZES.padding,
                 bottom: '-10%'
               }}
             >
@@ -166,7 +158,7 @@ const Home = ({ navigation }) => {
     function renderNotice() {
       return (
         <View style={{
-          marginTop: SIZES.padding * 4.5,
+          marginTop: SIZES.padding * 3,
           marginHorizontal: SIZES.padding,
           padding: 20,
           borderRadius: SIZES.radius,
