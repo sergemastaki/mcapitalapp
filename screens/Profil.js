@@ -89,7 +89,7 @@ const Profil = ({ navigation }) => {
                 marginTop: SIZES.radius,
                 ...FONTS.h3
               }}>
-                Nom:
+                Username:
               </Text>
               <Text style={{...styles.input}} selectable>
                 {name}
@@ -104,22 +104,6 @@ const Profil = ({ navigation }) => {
               <Text style={{...styles.input}} selectable>
                 {number}
               </Text>
-              <TouchableOpacity
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: SIZES.radius,
-                  height: 50,
-                  backgroundColor: COLORS.green
-                }}
-                onPress={() => navigation.navigate('Profil update', {
-                  info: {}
-                })}
-              >
-                <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
-                  Modifier
-                </Text>
-              </TouchableOpacity>
             </View>
           </View>
         )
