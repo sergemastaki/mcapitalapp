@@ -95,7 +95,7 @@ const Actifs = ({ navigation }) => {
         <TouchableOpacity
           style={{ ...styles.button }}
           onPress={() => navigation.navigate('Depot', {
-            currency: item.currency,
+            currency: item.name,
             type: "Depot"
           })}
         >
@@ -106,7 +106,7 @@ const Actifs = ({ navigation }) => {
         <TouchableOpacity
           style={{ ...styles.button }}
           onPress={() => navigation.navigate('Retrait', {
-            currency: item.currency,
+            currency: item.name,
             type: "Retrait"
           })}
         >
@@ -118,7 +118,7 @@ const Actifs = ({ navigation }) => {
           style={{ ...styles.button, backgroundColor: colorButton(item.name) }}
           disabled={!(item.name==='USDT' || item.name==='USD')}
           onPress={() => navigation.navigate('Swap', {
-            currency: item.currency,
+            currency: item.name,
             type: "Swap"
           })}
         >
